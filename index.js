@@ -94,6 +94,7 @@ nr.find = function ( txt, config )
 			var w = possibleLastName.toLowerCase();
 			console.log(`Possible last name: ${w}`)
 			console.log(`last.includes(w): ${last.includes(w)}`)
+			console.log(last)
 			if(last.includes(w)){
 				return true;
 			}
