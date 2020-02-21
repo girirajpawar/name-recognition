@@ -133,6 +133,7 @@ nr.find = function ( txt, config )
 					//This condition checks if the next word is a possible last name
 					lastIndex = wordIdx + 1;
 					possibleLast = words[lastIndex];
+					console.log(`possibleLast: ${possibleLast}`)
 					console.log(`isLastName(possibleLast, lastIndex): ${isLastName(possibleLast, lastIndex)}`)
 					if(isLastName(possibleLast, lastIndex)){
 						if(lastIndex < words.length-1){ //Checks for potential middle name
@@ -158,21 +159,13 @@ nr.find = function ( txt, config )
 								names.push(result);
 						}
 					}
-				}
-			}
-/*			else if (isLastName(word, wordIdx) && wordIdx <= words.length-2){	//Possible first name not detected, check if the last name is first
-				possibleLast = word;
-				var possibleFirst = words[wordIdx + 1];
-				w = possibleFirst.toLowerCase();
-
-				possibleGender = nr.firstNameMatch(w);
-				if(possibleGender){
-					result = nameConfig(possibleFirst, possibleMiddle, possibleLast, possibleGender, wordIdx);
-					if(result){
+					else { //if single name found
+						console.log(`if single name found: ${word}`)
+						result = nameConfig(word, , , possibleGender, wordIdx);
 						names.push(result);
 					}
 				}
-			} */
+			}
 		});
 	});
 	return names;
