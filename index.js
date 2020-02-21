@@ -163,7 +163,7 @@ nr.find = function ( txt, config )
 					}
 					else { //if single name found
 						console.log(`if single name found: ${word}`)
-						result = nameConfig(word, , , possibleGender, wordIdx);
+						result = nameConfig(word, '', '', possibleGender, wordIdx);
 						names.push(result);
 					}
 				}
