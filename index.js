@@ -126,14 +126,14 @@ nr.find = function ( txt, config )
 			var result = null;
 
 			var possibleGender = nr.firstNameMatch(w);
-
+			console.log(`possibleGender: ${possibleGender}`)
 			if(possibleGender)	{//Possible first name detected
-
+				console.log(`wordIdx <= words.length-2: ${wordIdx <= words.length-2}`)
 				if(wordIdx <= words.length-2) {
 					//This condition checks if the next word is a possible last name
 					lastIndex = wordIdx + 1;
 					possibleLast = words[lastIndex];
-
+					console.log(`isLastName(possibleLast, lastIndex): ${isLastName(possibleLast, lastIndex)}`)
 					if(isLastName(possibleLast, lastIndex)){
 						if(lastIndex < words.length-1){ //Checks for potential middle name
 							if(isLastName(words[lastIndex+1], lastIndex+1)){
