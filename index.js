@@ -13,7 +13,6 @@ var cache = {};
 // RC: better last name source --> https://www.census.gov/topics/population/genealogy/data.html
 
 var _ = require( 'lodash' );
-
 nr = {};
 nr.debug = false;
 
@@ -23,13 +22,13 @@ nr.find = function ( txt, config )
 	var requireUnique = _.get( config, 'unique' );
 	var top = _.get( config, 'top' );
 	if ( ! top ) { top = 0.85; }
-	if ( _.has( cache, top ) )
+	/*if ( _.has( cache, top ) )
 	{
 		mFirst = cache[ top ].mFirst;
 		fFirst = cache[ top ].fFirst;
 		aFirst = cache[ top ].aFirst;
 		last = cache[ top ].last;
-	} else {
+	} else {*/
 		mFirst = nr.getTopNames( mFirst_original, top );
 		fFirst = nr.getTopNames( fFirst_original, top );
 		aFirst = nr.getTopNames( aFirst_original, top );
@@ -39,16 +38,17 @@ nr.find = function ( txt, config )
 		cache[ top ].fFirst = fFirst;
 		cache[ top ].aFirst = aFirst;
 		cache[ top ].last = last;
-	}
+	/*}*/
 	var names = [];
 	var splits = nr.splitOnCommonDivisions( txt );
-
-	//console.log(splits);
+	console.log('splits');
+	console.log(splits);
 
 	_.each( splits, ( split, splitIdx ) =>
 	{
 		var words = nr.words( split );
-
+		console.log('words');
+		console.log(words);
 		var nameConfig = function(firstName, middleName, lastName, gender, index)
 		{
 			var fullName;
