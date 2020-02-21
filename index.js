@@ -180,6 +180,8 @@ nr.find = function ( txt, config )
 
 nr.getTopNames = function ( obj, percent )
 {
+	console.log(obj);
+	console.log(percent);
 	percent *= 100;
 	return _.filter( Object.keys( obj ), k => obj[ k ] <= percent );
 };
