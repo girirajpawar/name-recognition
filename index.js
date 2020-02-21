@@ -2,7 +2,6 @@ var mFirst_original = require( './lib/maleNames' );
 var fFirst_original = require( './lib/femaleNames' );
 var aFirst_original = require( './lib/ambiguousNames' );
 var last_original = require( './lib/last_names' );
-var indian_original = require( './lib/indian_names' );
 var mFirst;
 var fFirst;
 var aFirst;
@@ -35,17 +34,6 @@ nr.find = function ( txt, config )
 		fFirst = nr.getTopNames( fFirst_original, top );
 		aFirst = nr.getTopNames( aFirst_original, top );
 		last = nr.getTopNames( last_original, top );
-		alert(mFirst)
-		alert(fFirst)
-		alert(aFirst)
-		alert(last)
-		alert(mFirst=="" && fFirst=="" && aFirst=="" && last=="")
-		if(mFirst=="" && fFirst=="" && aFirst=="" && last==""){
-			var temp_indian_names;
-			temp_indian_names = nr.getTopNames( indian_original, top );
-			alert(temp_indian_names)
-			cache[ top ].mFirst = temp_indian_names;
-		}
 		cache[ top ] = {};
 		cache[ top ].mFirst = mFirst;
 		cache[ top ].fFirst = fFirst;
