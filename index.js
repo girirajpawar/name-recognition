@@ -30,7 +30,6 @@ nr.find = function ( txt, config )
 		last = cache[ top ].last;
 	} else {*/
 		mFirst = nr.getTopNames( mFirst_original, top );
-		console.log(mFirst)
 		fFirst = nr.getTopNames( fFirst_original, top );
 		aFirst = nr.getTopNames( aFirst_original, top );
 		last = nr.getTopNames( last_original, top );
@@ -188,6 +187,7 @@ nr.getTopNames = function ( obj, percent )
 nr.firstNameMatch = function ( w )
 {
 	var gender = null;
+	console.log(`mFirst.includes(w): ${mFirst.includes(w)}`)
 	if ( mFirst.includes( w ) )
 	{
 		gender = 'male';
