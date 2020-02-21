@@ -90,8 +90,10 @@ nr.find = function ( txt, config )
 
 		var isLastName = function(possibleLastName, lastNameIndex)
 		{
+			console.log(`inside isLastName: ${possibleLastName + '-' + lastNameIndex}`)
 			var w = possibleLastName.toLowerCase();
-
+			console.log(`Possible last name: ${w}`)
+			console.log(`last.includes(w): ${last.includes(w)}`)
 			if(last.includes(w)){
 				return true;
 			}
