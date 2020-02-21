@@ -22,13 +22,13 @@ nr.find = function ( txt, config )
 	var requireUnique = _.get( config, 'unique' );
 	var top = _.get( config, 'top' );
 	if ( ! top ) { top = 0.85; }
-	/*if ( _.has( cache, top ) )
+	if ( _.has( cache, top ) )
 	{
 		mFirst = cache[ top ].mFirst;
 		fFirst = cache[ top ].fFirst;
 		aFirst = cache[ top ].aFirst;
 		last = cache[ top ].last;
-	} else {*/
+	} else {
 		mFirst = nr.getTopNames( mFirst_original, top );
 		fFirst = nr.getTopNames( fFirst_original, top );
 		aFirst = nr.getTopNames( aFirst_original, top );
@@ -38,17 +38,13 @@ nr.find = function ( txt, config )
 		cache[ top ].fFirst = fFirst;
 		cache[ top ].aFirst = aFirst;
 		cache[ top ].last = last;
-	/*}*/
+	}
 	var names = [];
 	var splits = nr.splitOnCommonDivisions( txt );
-	console.log('splits');
-	console.log(splits);
 
 	_.each( splits, ( split, splitIdx ) =>
 	{
 		var words = nr.words( split );
-		console.log('words');
-		console.log(words);
 		var nameConfig = function(firstName, middleName, lastName, gender, index)
 		{
 			var fullName;
@@ -68,7 +64,6 @@ nr.find = function ( txt, config )
 
 			if( !requireCapitalized || capitalized){
 				if(	!requireUnique || unique ){
-					//console.log(fullName);
 					return {
 						first: firstName,
 						middle: middleName,
@@ -90,11 +85,7 @@ nr.find = function ( txt, config )
 
 		var isLastName = function(possibleLastName, lastNameIndex)
 		{
-			console.log(`inside isLastName: ${possibleLastName + '-' + lastNameIndex}`)
 			var w = possibleLastName.toLowerCase();
-			console.log(`Possible last name: ${w}`)
-			console.log(`last.includes(w): ${last.includes(w)}`)
-			console.log(last)
 			if(last.includes(w)){
 				return true;
 			}
@@ -129,15 +120,11 @@ nr.find = function ( txt, config )
 			var result = null;
 
 			var possibleGender = nr.firstNameMatch(w);
-			console.log(`possibleGender: ${possibleGender}`)
 			if(possibleGender)	{//Possible first name detected
-				console.log(`wordIdx <= words.length-2: ${wordIdx <= words.length-2}`)
 				if(wordIdx <= words.length-2) {
 					//This condition checks if the next word is a possible last name
 					lastIndex = wordIdx + 1;
 					possibleLast = words[lastIndex];
-					console.log(`possibleLast: ${possibleLast}`)
-					console.log(`isLastName(possibleLast, lastIndex): ${isLastName(possibleLast, lastIndex)}`)
 					if(isLastName(possibleLast, lastIndex)){
 						if(lastIndex < words.length-1){ //Checks for potential middle name
 							if(isLastName(words[lastIndex+1], lastIndex+1)){
@@ -163,7 +150,6 @@ nr.find = function ( txt, config )
 						}
 					}
 					else { //if single name found
-						console.log(`if single name found: ${word}`)
 						result = nameConfig(word, '', '', possibleGender, wordIdx);
 						names.push(result);
 					}
@@ -183,7 +169,6 @@ nr.getTopNames = function ( obj, percent )
 nr.firstNameMatch = function ( w )
 {
 	var gender = null;
-	console.log(`mFirst.includes(w): ${mFirst.includes(w)}`)
 	if ( mFirst.includes( w ) )
 	{
 		gender = 'male';
