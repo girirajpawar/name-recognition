@@ -7,6 +7,7 @@ var runTests = function ( p, x )
 	console.log( '** Running tests using the top ' + ( p * 100 ) + '% of names' );
 	console.log( '-- 50 random names -------------------------------' );
 	var randomNames = nr.find( strings.listOfNames, { capitalized : true, unique : true, top : p } );
+	console.log([...randomNames])
 	console.log( randomNames.length + ' names found out of 50 (' + x[ 0 ] + ' expected)' );
 	console.log( '--' );
 
@@ -24,9 +25,9 @@ var runTests = function ( p, x )
 
 console.log( '\n' );
 
-runTests( 0.75, [ 44, 2, 24 ] );
-runTests( 0.85, [ 50, 3, 27 ] );
-runTests( 0.95, [ 50, 3, 29 ] );
+//runTests( 0.75, [ 44, 2, 24 ] );
+//runTests( 0.85, [ 50, 3, 27 ] );
+runTests( 1.0, [ 50, 3, 29 ] );
 
 console.log( '85% seems to be the sweet spot.' );
 console.log( '\n' );

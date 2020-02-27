@@ -21,7 +21,7 @@ nr.find = function ( txt, config )
 	var requireCapitalized = _.get( config, 'capitalized' );
 	var requireUnique = _.get( config, 'unique' );
 	var top = _.get( config, 'top' );
-	if ( ! top ) { top = 0.85; }
+	if ( ! top ) { top = 1; }
 	if ( _.has( cache, top ) )
 	{
 		mFirst = cache[ top ].mFirst;
